@@ -12,7 +12,10 @@ const handleSearchImg = async (searchImgKeyword) => {
       }
     });
     
-    return response.data.images_results || []; 
+    const imageResults = response.data.images_results || [];
+    const originalImageUrls = imageResults.map(image => image.original).filter(Boolean);
+
+    return originalImageUrls.slice(0,1);
   } catch (error) {
     console.error("Error getting image:", error);
     throw error;
@@ -38,7 +41,7 @@ const getImg = async (req, res) => {
   }
 };
 
-export
+module.exports =
 {
     getImg,
     handleSearchImg

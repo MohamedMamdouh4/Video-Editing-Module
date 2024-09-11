@@ -8,7 +8,6 @@ const template = require('./Template.json');
 const client = new Creatomate.Client(process.env.CREATOMATE_API_KEY);
 
 for(element of template.elements){
-  // console.log("------------->",element.source);
   if(element.id.split("-")[0] == "image")
   {
     if(element.id.split("-")[1] == 0)
@@ -43,7 +42,7 @@ for(element of template.elements){
 
   console.log("------------->",element.source);
 }
-console.log("...........");
+
 app.post('/render-video', async (req, res) => {
   console.log(template);  
   try {

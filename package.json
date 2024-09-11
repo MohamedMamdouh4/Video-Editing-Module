@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "nodemon main.js"
+    "dev": "nodemon allMain.js"
   },
   "dependencies": {
     "@aws-sdk/client-polly": "^3.649.0",

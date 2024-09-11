@@ -1,11 +1,10 @@
 const express = require('express');
 const OpenAI = require("openai");
 const axios = require('axios');
-// const { S3Client } = require("@aws-sdk/client-s3");
-// const { Upload } = require("@aws-sdk/lib-storage");
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+const { S3Client } = require("@aws-sdk/client-s3");
+const { Upload } = require("@aws-sdk/lib-storage");
 require("dotenv").config();
-
+const getImgs = require('./getImages')
 const app = express();
 app.use(express.json());
 
@@ -24,31 +23,18 @@ const client = new S3Client({
 
 const uploadToS3 = async (audioStream, index) => {
   try {
-    // const upload = new Upload({
-    //   client: client,
-    //   params: {
-    //     Bucket: 'machine-genius',
-    //     Key: `My_Audios/audio-${index}.mp3`,
-    //     Body: audioStream,
-    //     ContentType: 'audio/mpeg',
-    //   },
-    // });
-    
-    const input = {
-      ACL: "public-read-write", // Set appropriate ACL
-      Body: audioStream, // Use the stream from OpenAI
-      Bucket: 'machine-genius',
-      Key: `My_Audios/audio-${index}.mp3`
-      // ContentType: 'audio/mpeg',
-    };
+    const upload = new Upload({
+      client: client,
+      params: {
+        Bucket: 'machine-genius',
+        Key: `My_Audios/audio-${index}.mp3`,
+        Body: audioStream,
+        ContentType: 'audio/mpeg',
+        ACL: "public-read-write",
+      },
+    });
 
-    console.log("here");    
-    const command = new PutObjectCommand(input);
-    console.log("command--->" , command);   
-    const response = await client.send(command);
-    console.log("File uploaded successfully:", response);
-
-    // await upload.done();
+    await upload.done();
     return `https://machine-genius.s3.amazonaws.com/My_Audios/audio-${index}.mp3`;
   } catch (error) {
     console.error("Error uploading to S3:", error);
@@ -92,10 +78,16 @@ const splitContent = async (content) => {
       console.error("Failed to parse JSON response:", parseError);
       throw new Error("Invalid JSON response from OpenAI");
     }
+    const resultObject = await Promise.all(parsedResult.paragraphs.map(async (paragraph) => {
+      const keywordsAndImages = await Promise.all(paragraph.keywords.map(async (keyword) => {
+        const imageUrl = await getImgs.handleSearchImg(keyword);
+        return { keyword, imageUrl };
+      }));
 
-    const resultObject = parsedResult.paragraphs.map(paragraph => ({
-      text: paragraph.text,
-      keywords: paragraph.keywords.map(keyword => keyword.toLowerCase().replace(/[^a-z0-9]/g, ''))
+      return {
+        text: paragraph.text,
+        keywordsAndImages,
+      };
     }));
 
     return resultObject;
