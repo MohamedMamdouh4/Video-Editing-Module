@@ -8,11 +8,40 @@ const template = require('./Template.json');
 const client = new Creatomate.Client(process.env.CREATOMATE_API_KEY);
 
 for(element of template.elements){
-  console.log("------------->",element.source);
-  if(element.source == "")
+  // console.log("------------->",element.source);
+  if(element.id.split("-")[0] == "image")
   {
-    element.source = "https://ichef.bbci.co.uk/news/480/cpsprodpb/7a23/live/653b23a0-6bb2-11ef-93ee-6f9b99da9308.jpg.webp"
+    if(element.id.split("-")[1] == 0)
+    { 
+      element.source = "https://www.ctvnews.ca/content/dam/ctvnews/en/images/2024/9/6/prime-minister-justin-trudeau-answers-questions-1-7028391-1725653410377.jpg" 
+      element.duration = 10
+      element.time = 0.4
+    }
+    if(element.id.split("-")[1] == 1)
+    { 
+      element.source = "https://www.ctvnews.ca/content/dam/ctvnews/en/images/2024/9/6/prime-minister-designate-justin-trudeau-1-7028361-1725652679801.jpg" 
+      element.duration = 13
+      element.time = 12
+    }
   }
+
+  if(element.id.split("-")[0] == "audio")
+    {
+      if(element.id.split("-")[1] == 0)
+      { 
+        element.source = "https://machine-genius.s3.amazonaws.com/My+Audios/audio-0.mp3" 
+        element.duration = 10
+        element.time = 0.4
+      }
+      if(element.id.split("-")[1] == 1)
+      { 
+        element.source = "https://machine-genius.s3.amazonaws.com/My+Audios/audio-1.mp3" 
+        element.duration = 13
+        element.time = 12
+      }
+    }
+
+  console.log("------------->",element.source);
 }
 console.log("...........");
 app.post('/render-video', async (req, res) => {
