@@ -13,9 +13,13 @@ const handleSearchImg = async (searchImgKeyword) => {
     });
     
     const imageResults = response.data.images_results || [];
-    const originalImageUrls = imageResults.map(image => image.original).filter(Boolean);
 
-    return originalImageUrls.slice(0,1);
+    const filteredImageUrls = imageResults
+      .filter(image => image.original && image.original_width < 900 && image.original_width > 600 && image.original_height < 800 && image.original_height > 400) 
+      .map(image => image.original) 
+      .filter(url => !url.includes('fbsbx') && !url.includes('www.consilium.europa.eu') && !url.includes('www.politico.com')); 
+
+    return filteredImageUrls.slice(1,8);
   } catch (error) {
     console.error("Error getting image:", error);
     throw error;

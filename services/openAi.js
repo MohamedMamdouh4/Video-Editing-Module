@@ -6,9 +6,10 @@ require("dotenv").config();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const splitContent = async (content) => {
     try {
-      const prompt = `Could you please split this content into paragraphs, then give one KeyWord for each paragraph,
-      and i need to make this keywoerd to be name of famous person JUST MENTION THE FAMOUS NAMES OF ONLY LIKE (presdint , head of governoment , ...)
-      dont give me any names ever!!!! 
+      const prompt = `Could you please split this content into paragraphs, then give me JUST ONE KEYWORD for each paragraph ONLY ONE KEYWORD !!!,
+      I need keword to be names of persons that mentioned in pragraph and foucus if this names for famous people (President , Head of governoment , ..)
+      IF there are any person mentioned in this paragraph give me name of governomet if mentioned , or name of country, if you dont find any
+      anything fo put as keword give me the most important word in this pragraph
       and please don't change the original content EVER!
       Here is the content:
       ${content}
@@ -17,12 +18,12 @@ const splitContent = async (content) => {
       {
         "paragraphs": [
           {
-            "text": "This is the first paragraph.",
-            "keywords": ["first", "paragraph"]
+            "text": "Trudeau have been finished his ....",
+            "keywords": ["Trudeau"]
           },
           {
-            "text": "This is the second paragraph.",
-            "keywords": ["second", "paragraph"]
+            "text": "Trump ordered the .....",
+            "keywords": ["Trump"]
           }
         ]
       }`;
