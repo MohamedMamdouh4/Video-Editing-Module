@@ -4,6 +4,7 @@ const getImgs = require('./getImages');
 require("dotenv").config();
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
 const splitContent = async (content) => {
     try {
       const prompt = `Could you please split this content into paragraphs, then give me JUST ONE KEYWORD for each paragraph ONLY ONE KEYWORD !!!,
@@ -43,15 +44,20 @@ const splitContent = async (content) => {
         console.error("Failed to parse JSON response:", parseError);
         throw new Error("Invalid JSON response from OpenAI");
       }
-      const resultObject = await Promise.all(parsedResult.paragraphs.map(async (paragraph) => {
+      
+      const resultObject = await Promise.all(parsedResult.paragraphs.map(async (paragraph, index) => {
         const keywordsAndImages = await Promise.all(paragraph.keywords.map(async (keyword) => {
           const imageUrl = await getImgs.handleSearchImg(keyword);
           return { keyword, imageUrl };
         }));
-  
+
+        const audioPath = await convertTextToAudio(paragraph.text, index);
+
         return {
+          index,
           text: paragraph.text,
           keywordsAndImages,
+          audioPath
         };
       }));
   
@@ -78,8 +84,44 @@ const convertTextToAudio = async (text, index) => {
   }
 };
 
+const regenrateAudio = async (req , res) => {
+  try {
+    const { selectedContent , index} = req.body;
+    if (!selectedContent || !index) {
+      return res.status(400).json({ success: false, error: "No content provided" });
+    }
+    const audioPath = await convertTextToAudio(selectedContent, index);
+    return res.json({ success: true, audioPath });
+  }
+  catch
+  {
+    return res.status(500).json({ success: false, error: "Error regenerating audio"})
+  }
+}
+
+const splitAndConvert = async (req , res) => {
+  try {
+    const { selectedContent } = req.body;
+    if (!selectedContent) {
+      return res.status(400).json({ success: false, error: "No content provided" });
+    }
+
+    const paragraphJson = await splitContent(selectedContent);
+
+    return res
+    .status(200)
+    .json({ success: true, paragraphJson });    
+  }
+  catch
+  {
+    return res.status(500).json({ success: false, error: "Error processing content"})
+  }
+}
+
 module.exports =
 {
     convertTextToAudio,
-    splitContent
+    splitContent,
+    splitAndConvert,
+    regenrateAudio
 }

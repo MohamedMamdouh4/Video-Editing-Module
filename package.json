@@ -14,6 +14,7 @@
     "fs": "^0.0.1-security",
     "get-audio-duration": "^4.0.1",
     "nodemon": "^3.1.4",
-    "openai": "^4.58.1"
+    "openai": "^4.58.1",
+    "sharp": "^0.33.5"
   }
 }
