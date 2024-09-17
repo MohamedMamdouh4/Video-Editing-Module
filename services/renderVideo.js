@@ -9,18 +9,16 @@ const renderVideo = async (req, res) => {
       return res.status(400).json({ success: false, error: "No content provided" });
     }
 
-    // Use the input `paragraphJson` to generate audio and add elements to the template
     const template = require('../Template.json');
-    let totalDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0);
-    template.duration = totalDuration + 25;
-    template.elements = [];
+    let totalDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0); /// ---> here the duration need to be more dynamic as slides's time 
+    template.duration = totalDuration + 56;  
 
-    // Add background video (track 1)
+    // adding elements to body
     const track1Element = {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": 0,
+      "time": 30, // ----> here the start time need to be dynamic ** start after all slides finishes
       "animations": [
         {
           "time": 0,
@@ -32,15 +30,14 @@ const renderVideo = async (req, res) => {
       ],
       "source": "https://drive.google.com/file/d/1usbexWCpNdrq-wiqvbVIhJHfuxiTkcf4/view?usp=sharing"
     };
-    template.elements.push(track1Element);  
+    template.elements[0].elements.push(track1Element);  
 
-    // Add static elements (track 4)
     const track4Elements = [
       {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": 0,
+        "time": 30, // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
         "duration": totalDuration + 6,
         "x": "93.6257%",
         "y": "10.2028%",
@@ -62,7 +59,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 6,
+        "time": totalDuration + 36, // ----> here the start time need to be dynamic ** start after all slides finishes
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [
@@ -76,9 +73,9 @@ const renderVideo = async (req, res) => {
         ]
       }
     ];
-    template.elements.push(...track4Elements);
+    template.elements[0].elements.push(...track4Elements);
 
-    let currentTime = 0;
+    let currentTime = 30; // --> need to be dynamic and start when all slides finishes
     const timePadding = 0.4;
 
     paragraphJson.forEach((paragraph, index) => {
@@ -121,7 +118,7 @@ const renderVideo = async (req, res) => {
             }
           ]
         };
-        template.elements.push(videoElement);
+        template.elements[0].elements.push(videoElement);
       } else {
         // If no videoPath, proceed with adding images this is the normal condition the vid will render without videooooooos only images , audios
         const imageUrls = keywordsAndImages[0].imageUrl;
@@ -164,7 +161,7 @@ const renderVideo = async (req, res) => {
             ],
             source: imageUrls[i] 
           };
-          template.elements.push(imageElement);
+          template.elements[0].elements.push(imageElement);
         }
       }
 
@@ -176,7 +173,7 @@ const renderVideo = async (req, res) => {
         duration: audioDuration,
         source: audioPath.url 
       };
-      template.elements.push(audioElement);
+      template.elements[0].elements.push(audioElement);
 
       currentTime += duration + timePadding;
     });

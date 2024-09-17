@@ -6,5 +6,92 @@
   "fill_color": "#ffffff",
   "multipart": 120,
   "prefetch": true,
-  "elements": []
+  "elements": [
+    {
+      "type": "composition",
+      "elements": [
+        
+      ]
+    },
+    {
+      "id": "88628919-f448-4287-88cf-0317cf8c8f34",
+      "name": "SLIDE 1",
+      "type": "composition",
+      "track": 2,
+      "time": 0,
+      "duration": 30.418,
+      "elements": [
+        {
+          "id": "eb6fbb24-5fee-47ea-b9a8-d8d062dede55",
+          "type": "image",
+          "track": 1,
+          "time": 0,
+          "x": [
+            {
+              "time": 0,
+              "value": "78.5853%"
+            },
+            {
+              "time": 16.093,
+              "easing": "cubic-bezier(0.12, 0.01, 0.55, 1)",
+              "value": "51%"
+            }
+          ],
+          "width": "150%",
+          "height": "150%",
+          "source": "20c2248a-1f3c-466d-b00b-e078a7bc1538"
+        },
+        {
+          "id": "e7648287-54a6-4e5a-9623-cc2a28f8f65e",
+          "type": "image",
+          "track": 2,
+          "time": 0,
+          "x": [
+            {
+              "time": 0,
+              "value": "90%"
+            },
+            {
+              "time": 7.81,
+              "easing": "cubic-bezier(0, 0.96, 0.78, 0.99)",
+              "value": "30%"
+            }
+          ],
+          "y": "35%",
+          "width": "200%",
+          "height": "200%",
+          "x_scale": "90%",
+          "y_scale": "90%",
+          "source": "b5079604-f403-4156-a478-55e5e9771e88"
+        },
+        {
+          "id": "36adfde6-d4a4-41d7-b5f5-5eee48515d87",
+          "type": "text",
+          "track": 3,
+          "time": 0,
+          "x": [
+            {
+              "time": 0,
+              "value": "-30%"
+            },
+            {
+              "time": 5.16,
+              "easing": "cubic-bezier(0, 0.58, 0.09, 0.96)",
+              "value": "3.5126%"
+            }
+          ],
+          "y": "19.0966%",
+          "width": "37.5432%",
+          "height": "61.8067%",
+          "x_anchor": "0%",
+          "y_anchor": "0%",
+          "fill_color": "#ffffff",
+          "shadow_color": "rgba(0,0,0,0.25)",
+          "text": "STATE\nOF\nTHE\nCOUNTRY",
+          "font_family": "Suez One",
+          "font_size_minimum": "1.3 vmin"
+        }
+      ]
+    }
+  ]
 }
