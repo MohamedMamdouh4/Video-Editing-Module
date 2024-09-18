@@ -28,37 +28,26 @@ const renderVideo = async (req, res) => {
       template.elements[1].elements[2].text = "STATE\nOF\nTE\nCOUNTRY"
       template.elements[1].elements[3].source = String(audioPath.url)
       template.elements[1].elements[3].duration = audioDuration
-    
 
-      const audioElement = {
-        id: `audio-${index}`,
-        type: "audio",
-        track: 3,
-        time: currentTime,
-        duration: audioDuration,
-        source: audioPath.url 
-      };
-      // template.elements[0].elements.push(audioElement);
-
-      currentTime += template.elements[1].duration + timePadding;
+      currentTime += template.elements[1].duration ;
     });
 
     // adding to slide 2
     slide2Json.forEach((slide2, index) => {
       const { text, keywordsAndImages, audioPath} = slide2;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
-      template.elements[2].time = currentTime
+      template.elements[2].time = currentTime - 4
       template.elements[2].duration = audioDuration
       template.elements[2].x[0].time = audioDuration - 4
       template.elements[2].x_scale[0].time = audioDuration - 7
 
-
       template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl)
       template.elements[2].elements[5].text = "PEOPLE"
       template.elements[2].elements[6].source = String(audioPath.url)
+      template.elements[2].elements[6].time = 4
       template.elements[2].elements[6].duration = audioDuration
 
-      currentTime += template.elements[2].duration + timePadding;
+      currentTime += template.elements[2].duration - 4;
     });
 
     // adding elements to body
@@ -66,7 +55,7 @@ const renderVideo = async (req, res) => {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": currentTime, // ----> here the start time need to be dynamic ** start after all slides finishes
+      "time": currentTime - 7, // ----> here the start time need to be dynamic ** start after all slides finishes
       "animations": [
         {
           "time": 0,
@@ -76,7 +65,7 @@ const renderVideo = async (req, res) => {
           "direction": "270°"
         }
       ],
-      "source": "https://drive.google.com/file/d/1usbexWCpNdrq-wiqvbVIhJHfuxiTkcf4/view?usp=sharing"
+      "source": "https://machine-genius.s3.amazonaws.com/BackGround_Video/background+sherry.mp4"
     };
     template.elements[0].elements.push(track1Element);  
 
@@ -85,7 +74,7 @@ const renderVideo = async (req, res) => {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": currentTime, // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
+        "time": currentTime - 7 , // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
         "duration": totalDuration + 6,
         "x": "93.6257%",
         "y": "10.2028%",
