@@ -39,7 +39,7 @@
           ],
           "width": "150%",
           "height": "150%",
-          "source": "20c2248a-1f3c-466d-b00b-e078a7bc1538"
+          "source": ""
         },
         {
           "id": "e7648287-54a6-4e5a-9623-cc2a28f8f65e",
@@ -87,9 +87,222 @@
           "y_anchor": "0%",
           "fill_color": "#ffffff",
           "shadow_color": "rgba(0,0,0,0.25)",
-          "text": "STATE\nOF\nTHE\nCOUNTRY",
+          "text": "",
           "font_family": "Suez One",
           "font_size_minimum": "1.3 vmin"
+        },
+        {
+          "id": "audio",
+          "time": 0,
+          "type": "audio",
+          "track": 4,
+          "source": "",
+          "duration": 0
+        }
+      ]
+    },
+    {
+      "id": "68ef7620-e62f-4b8d-9f8f-e7426662c36f",
+      "name": "SLIDE 2",
+      "type": "composition",
+      "track": 3,
+      "time": 0,
+      "duration": 0,
+      "x": [
+        {
+          "time": 36.343,
+          "value": "50%"
+        },
+        {
+          "time": "end",
+          "value": "-60%"
+        }
+      ],
+      "x_scale": [
+        {
+          "time": 33.698,
+          "easing": "quadratic-in",
+          "value": "100%"
+        },
+        {
+          "time": "end",
+          "easing": "cubic-bezier(0.48, 0.02, 0.81, 0.99)",
+          "value": "120%"
+        }
+      ],
+      "y_scale": [
+        {
+          "time": 3.433,
+          "easing": "quadratic-in",
+          "value": "100%"
+        },
+        {
+          "time": "end",
+          "easing": "cubic-bezier(0.48, 0.02, 0.81, 0.99)",
+          "value": "120%"
+        }
+      ],
+      "elements": [
+        {
+          "id": "bf931e71-dc76-42dc-995d-26fb23d2447d",
+          "type": "shape",
+          "track": 1,
+          "time": 0,
+          "x": "41.9509%",
+          "y": [
+            {
+              "time": 0.096,
+              "value": "163.6925%"
+            },
+            {
+              "time": 4.641,
+              "easing": "cubic-bezier(0.62, 0.02, 0.33, 0.98)",
+              "value": "53.7037%"
+            }
+          ],
+          "width": "116.0983%",
+          "height": "127.3849%",
+          "x_anchor": "50%",
+          "y_anchor": "50%",
+          "fill_color": "#0a0404",
+          "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
+        },
+        {
+          "id": "c190a083-a5ae-457c-b2d2-f04eaf2c18fe",
+          "type": "shape",
+          "track": 2,
+          "time": 0,
+          "x": "38.952%",
+          "y": [
+            {
+              "time": 0.622,
+              "easing": "cubic-bezier(0.69, 0.01, 0.55, 1)",
+              "value": "166.7789%"
+            },
+            {
+              "time": 4.614,
+              "value": "64.9551%"
+            }
+          ],
+          "width": "122.0958%",
+          "height": "129.9102%",
+          "x_anchor": "50%",
+          "y_anchor": "50%",
+          "fill_color": "#f7e3e3",
+          "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
+        },
+        {
+          "id": "9f05e947-4ef5-4f39-b4c4-29911a296f8e",
+          "type": "shape",
+          "track": 3,
+          "time": 1.02,
+          "x": "37.7367%",
+          "y": [
+            {
+              "time": 0.017,
+              "value": "179.1246%"
+            },
+            {
+              "time": 3.7,
+              "value": "79.1248%"
+            }
+          ],
+          "width": "124.5265%",
+          "height": "158.2492%",
+          "x_anchor": "50%",
+          "y_anchor": "50%",
+          "fill_color": "#f53030",
+          "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
+        },
+        {
+          "id": "f089b10e-ada0-4e38-9c83-220055b336c9",
+          "type": "image",
+          "track": 4,
+          "time": 1.613,
+          "y": [
+            {
+              "time": 0.013,
+              "value": "150%"
+            },
+            {
+              "time": 3.125,
+              "value": "50%"
+            }
+          ],
+          "source": "d184bb94-074b-4077-9aeb-18bd6b7db5b8"
+        },
+        {
+          "id": "a3fe104b-e41b-4466-af5d-d23ae0ecbe52",
+          "type": "shape",
+          "track": 5,
+          "time": 2.47,
+          "y": [
+            {
+              "time": 0.06,
+              "value": "85.2892%"
+            },
+            {
+              "time": 1.83,
+              "value": "35%"
+            }
+          ],
+          "width": [
+            {
+              "time": 0.06,
+              "value": "0%"
+            },
+            {
+              "time": 1.83,
+              "value": "50%"
+            }
+          ],
+          "height": "15.7127%",
+          "x_anchor": "50%",
+          "y_anchor": "50%",
+          "fill_color": "#0a0404",
+          "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
+        },
+        {
+          "id": "244687b0-25c4-4e5d-b25f-0f85b2af0648",
+          "type": "text",
+          "track": 6,
+          "time": 2.545,
+          "x": "38.3978%",
+          "y": [
+            {
+              "time": 0,
+              "value": "77.45%"
+            },
+            {
+              "time": 1.75,
+              "value": "28.0785%"
+            }
+          ],
+          "width": "23.2044%",
+          "height": "13.8443%",
+          "x_anchor": "0%",
+          "y_anchor": "0%",
+          "fill_color": "#ffffff",
+          "opacity": [
+            {
+              "time": 0.001,
+              "value": "0%"
+            },
+            {
+              "time": 0.451,
+              "value": "100%"
+            }
+          ],
+          "text": "Country",
+          "font_family": "Suez One"
+        },
+        {
+          "id": "audio",
+          "time": 0,
+          "type": "audio",
+          "track": 7,
+          "source": "",
+          "duration": 0
         }
       ]
     }

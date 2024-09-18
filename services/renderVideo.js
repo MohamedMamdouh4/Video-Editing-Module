@@ -4,21 +4,69 @@ const openAiSrc = require('./openAi');
 
 const renderVideo = async (req, res) => {
   try {
-    const { paragraphJson } = req.body;
-    if (!paragraphJson) {
+    const { paragraphJson , slide1Json , slide2Json} = req.body;
+    if (!paragraphJson || !slide1Json || !slide2Json) {
       return res.status(400).json({ success: false, error: "No content provided" });
     }
 
     const template = require('../Template.json');
-    let totalDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0); /// ---> here the duration need to be more dynamic as slides's time 
-    template.duration = totalDuration + 56;  
+    let bodyDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0); 
+    let slide1lDuration = slide1Json.reduce((acc, slide1) => acc + (slide1.audioPath.duration || 15), 0); 
+    let slide2lDuration = slide1Json.reduce((acc, slide2) => acc + (slide2.audioPath.duration || 15), 0); 
+    let totalDuration = bodyDuration + slide1lDuration + slide2lDuration;
+    template.duration = totalDuration + 20; 
+    const timePadding = 0.4;
+    let currentTime = 0;
+
+    // adding to slide 1
+    slide1Json.forEach((slide1, index) => {
+      const { text, keywordsAndImages, audioPath} = slide1;
+      const audioDuration = audioPath ? audioPath.duration || 15 : 15;
+      template.elements[1].duration = audioDuration
+
+      template.elements[1].elements[0].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[1].elements[2].text = "STATE\nOF\nTE\nCOUNTRY"
+      template.elements[1].elements[3].source = String(audioPath.url)
+      template.elements[1].elements[3].duration = audioDuration
+    
+
+      const audioElement = {
+        id: `audio-${index}`,
+        type: "audio",
+        track: 3,
+        time: currentTime,
+        duration: audioDuration,
+        source: audioPath.url 
+      };
+      // template.elements[0].elements.push(audioElement);
+
+      currentTime += template.elements[1].duration + timePadding;
+    });
+
+    // adding to slide 2
+    slide2Json.forEach((slide2, index) => {
+      const { text, keywordsAndImages, audioPath} = slide2;
+      const audioDuration = audioPath ? audioPath.duration || 15 : 15;
+      template.elements[2].time = currentTime
+      template.elements[2].duration = audioDuration
+      template.elements[2].x[0].time = audioDuration - 4
+      template.elements[2].x_scale[0].time = audioDuration - 7
+
+
+      template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[2].elements[5].text = "PEOPLE"
+      template.elements[2].elements[6].source = String(audioPath.url)
+      template.elements[2].elements[6].duration = audioDuration
+
+      currentTime += template.elements[2].duration + timePadding;
+    });
 
     // adding elements to body
     const track1Element = {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": 30, // ----> here the start time need to be dynamic ** start after all slides finishes
+      "time": currentTime, // ----> here the start time need to be dynamic ** start after all slides finishes
       "animations": [
         {
           "time": 0,
@@ -37,7 +85,7 @@ const renderVideo = async (req, res) => {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": 30, // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
+        "time": currentTime, // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
         "duration": totalDuration + 6,
         "x": "93.6257%",
         "y": "10.2028%",
@@ -59,7 +107,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 36, // ----> here the start time need to be dynamic ** start after all slides finishes
+        "time": totalDuration + 6, 
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [
@@ -75,8 +123,6 @@ const renderVideo = async (req, res) => {
     ];
     template.elements[0].elements.push(...track4Elements);
 
-    let currentTime = 30; // --> need to be dynamic and start when all slides finishes
-    const timePadding = 0.4;
 
     paragraphJson.forEach((paragraph, index) => {
       const { text, keywordsAndImages, audioPath, videoPath } = paragraph;
