@@ -4,8 +4,8 @@ const openAiSrc = require('./openAi');
 
 const renderVideo = async (req, res) => {
   try {
-    const { paragraphJson , slide1Json , slide2Json} = req.body;
-    if (!paragraphJson || !slide1Json || !slide2Json) {
+    const { paragraphJson , slide1Json , slide2Json , slide3Json , slide4Json} = req.body;
+    if (!paragraphJson || !slide1Json || !slide2Json || ! slide3Json || !slide4Json) {
       return res.status(400).json({ success: false, error: "No content provided" });
     }
 
@@ -13,7 +13,11 @@ const renderVideo = async (req, res) => {
     let bodyDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0); 
     let slide1lDuration = slide1Json.reduce((acc, slide1) => acc + (slide1.audioPath.duration || 15), 0); 
     let slide2lDuration = slide1Json.reduce((acc, slide2) => acc + (slide2.audioPath.duration || 15), 0); 
-    let totalDuration = bodyDuration + slide1lDuration + slide2lDuration;
+    let slide3lDuration = slide1Json.reduce((acc, slide3) => acc + (slide3.audioPath.duration || 15), 0);
+    let slide4lDuration = slide1Json.reduce((acc, slide4) => acc + (slide4.audioPath.duration || 15), 0);
+    let totalDuration = bodyDuration + slide1lDuration + slide2lDuration + slide3lDuration + slide4lDuration;
+    console.log("--------->" , totalDuration);
+    
     template.duration = totalDuration + 20; 
     const timePadding = 0.4;
     let currentTime = 0;
@@ -29,15 +33,15 @@ const renderVideo = async (req, res) => {
       template.elements[1].elements[3].source = String(audioPath.url)
       template.elements[1].elements[3].duration = audioDuration
 
-      currentTime += template.elements[1].duration ;
+      currentTime += template.elements[1].duration - 4 ;
     });
 
     // adding to slide 2
     slide2Json.forEach((slide2, index) => {
       const { text, keywordsAndImages, audioPath} = slide2;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
-      template.elements[2].time = currentTime - 4
-      template.elements[2].duration = audioDuration
+      template.elements[2].time = currentTime 
+      template.elements[2].duration = audioDuration + 4
       template.elements[2].x[0].time = audioDuration - 4
       template.elements[2].x_scale[0].time = audioDuration - 7
 
@@ -50,12 +54,45 @@ const renderVideo = async (req, res) => {
       currentTime += template.elements[2].duration - 4;
     });
 
+    // adding to slide 3
+    slide3Json.forEach((slide3, index) => {
+      const { text, keywordsAndImages, audioPath} = slide3;
+      const audioDuration = audioPath ? audioPath.duration || 15 : 15;
+      template.elements[3].time = currentTime 
+      template.elements[3].duration = audioDuration + 4
+
+      template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[3].elements[6].text = "CHOS"
+      template.elements[3].elements[7].source = String(audioPath.url)
+      template.elements[3].elements[7].time = 4
+      template.elements[3].elements[7].duration = audioDuration
+
+      currentTime += template.elements[2].duration - 4;
+    });
+
+    // adding to slide 4
+    slide4Json.forEach((slide4, index) => {
+      const { text, keywordsAndImages, audioPath} = slide4;
+      const audioDuration = audioPath ? audioPath.duration || 15 : 15;
+      template.elements[4].time = currentTime 
+      template.elements[4].duration = audioDuration + 4
+
+      template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[4].elements[6].text = "Sial\nConstruct"
+      template.elements[4].elements[7].source = String(audioPath.url)
+      template.elements[4].elements[7].time = 4
+      template.elements[4].elements[7].duration = audioDuration
+
+      currentTime += template.elements[2].duration - 4;
+    });
+    
     // adding elements to body
     const track1Element = {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": currentTime - 7, // ----> here the start time need to be dynamic ** start after all slides finishes
+      "time": currentTime, // ----> here the start time need to be dynamic ** start after all slides finishes
       "animations": [
         {
           "time": 0,
@@ -65,7 +102,7 @@ const renderVideo = async (req, res) => {
           "direction": "270°"
         }
       ],
-      "source": "https://machine-genius.s3.amazonaws.com/BackGround_Video/background+sherry.mp4"
+      "source": "https://drive.google.com/file/d/1usbexWCpNdrq-wiqvbVIhJHfuxiTkcf4/view?usp=sharing"
     };
     template.elements[0].elements.push(track1Element);  
 
@@ -74,7 +111,7 @@ const renderVideo = async (req, res) => {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": currentTime - 7 , // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
+        "time": currentTime , // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
         "duration": totalDuration + 6,
         "x": "93.6257%",
         "y": "10.2028%",
@@ -96,7 +133,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 6, 
+        "time": totalDuration + 1, 
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [
@@ -111,7 +148,6 @@ const renderVideo = async (req, res) => {
       }
     ];
     template.elements[0].elements.push(...track4Elements);
-
 
     paragraphJson.forEach((paragraph, index) => {
       const { text, keywordsAndImages, audioPath, videoPath } = paragraph;
