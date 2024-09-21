@@ -18,7 +18,7 @@ const renderVideo = async (req, res) => {
     let totalDuration = bodyDuration + slide1lDuration + slide2lDuration + slide3lDuration + slide4lDuration;
     console.log("--------->" , totalDuration);
     
-    template.duration = totalDuration + 20; 
+    template.duration = totalDuration + 30; 
     const timePadding = 0.4;
     let currentTime = 0;
 
@@ -26,14 +26,14 @@ const renderVideo = async (req, res) => {
     slide1Json.forEach((slide1, index) => {
       const { text, keywordsAndImages, audioPath} = slide1;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
-      template.elements[1].duration = audioDuration
+      template.elements[1].duration = audioDuration + 5
 
       template.elements[1].elements[0].source = String(keywordsAndImages[0].imageUrl)
       template.elements[1].elements[2].text = "STATE\nOF\nTE\nCOUNTRY"
       template.elements[1].elements[3].source = String(audioPath.url)
       template.elements[1].elements[3].duration = audioDuration
 
-      currentTime += template.elements[1].duration - 4 ;
+      currentTime += audioDuration ;
     });
 
     // adding to slide 2
@@ -41,50 +41,51 @@ const renderVideo = async (req, res) => {
       const { text, keywordsAndImages, audioPath} = slide2;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[2].time = currentTime 
-      template.elements[2].duration = audioDuration + 4
+      template.elements[2].duration = audioDuration + 15
       template.elements[2].x[0].time = audioDuration - 4
       template.elements[2].x_scale[0].time = audioDuration - 7
 
       template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl)
       template.elements[2].elements[5].text = "PEOPLE"
       template.elements[2].elements[6].source = String(audioPath.url)
-      template.elements[2].elements[6].time = 4
+      // template.elements[2].elements[6].time = 4
       template.elements[2].elements[6].duration = audioDuration
 
-      currentTime += template.elements[2].duration - 4;
+      currentTime += audioDuration;
     });
 
     // adding to slide 3
     slide3Json.forEach((slide3, index) => {
       const { text, keywordsAndImages, audioPath} = slide3;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
-      template.elements[3].time = currentTime 
-      template.elements[3].duration = audioDuration + 4
+      template.elements[3].time = currentTime
+      template.elements[3].duration = audioDuration + 5
 
       template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl)
       template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl)
       template.elements[3].elements[6].text = "CHOS"
       template.elements[3].elements[7].source = String(audioPath.url)
-      template.elements[3].elements[7].time = 4
+      // template.elements[3].elements[7].time = 4
       template.elements[3].elements[7].duration = audioDuration
 
-      currentTime += template.elements[2].duration - 4;
+      currentTime += audioDuration
     });
 
     // adding to slide 4
     slide4Json.forEach((slide4, index) => {
       const { text, keywordsAndImages, audioPath} = slide4;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
-      template.elements[4].time = currentTime 
-      template.elements[4].duration = audioDuration + 4
+      template.elements[4].time = currentTime
+      template.elements[4].duration = audioDuration + 5
 
       template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[4].elements[3].duration = audioDuration
       template.elements[4].elements[6].text = "Sial\nConstruct"
       template.elements[4].elements[7].source = String(audioPath.url)
-      template.elements[4].elements[7].time = 4
+      // template.elements[4].elements[7].time = 4
       template.elements[4].elements[7].duration = audioDuration
 
-      currentTime += template.elements[2].duration - 4;
+      currentTime += audioDuration;
     });
     
     // adding elements to body
@@ -92,7 +93,7 @@ const renderVideo = async (req, res) => {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": currentTime, // ----> here the start time need to be dynamic ** start after all slides finishes
+      "time": currentTime, 
       "animations": [
         {
           "time": 0,
@@ -111,8 +112,8 @@ const renderVideo = async (req, res) => {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": currentTime , // ----> this is logo, here the start time need to be dynamic ** start after all slides finishes
-        "duration": totalDuration + 6,
+        "time": currentTime,
+        "duration": totalDuration,
         "x": "93.6257%",
         "y": "10.2028%",
         "width": "8.0154%",
@@ -133,7 +134,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 1, 
+        "time": totalDuration + 10, 
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [
