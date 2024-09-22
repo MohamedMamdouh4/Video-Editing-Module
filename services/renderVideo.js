@@ -12,13 +12,13 @@ const renderVideo = async (req, res) => {
     const template = require('../Template.json');
     let bodyDuration = paragraphJson.reduce((acc, paragraph) => acc + (paragraph.audioPath.duration || 15), 0); 
     let slide1lDuration = slide1Json.reduce((acc, slide1) => acc + (slide1.audioPath.duration || 15), 0); 
-    let slide2lDuration = slide1Json.reduce((acc, slide2) => acc + (slide2.audioPath.duration || 15), 0); 
-    let slide3lDuration = slide1Json.reduce((acc, slide3) => acc + (slide3.audioPath.duration || 15), 0);
-    let slide4lDuration = slide1Json.reduce((acc, slide4) => acc + (slide4.audioPath.duration || 15), 0);
+    let slide2lDuration = slide2Json.reduce((acc, slide2) => acc + (slide2.audioPath.duration || 15), 0); 
+    let slide3lDuration = slide3Json.reduce((acc, slide3) => acc + (slide3.audioPath.duration || 15), 0);
+    let slide4lDuration = slide4Json.reduce((acc, slide4) => acc + (slide4.audioPath.duration || 15), 0);
     let totalDuration = bodyDuration + slide1lDuration + slide2lDuration + slide3lDuration + slide4lDuration;
     console.log("--------->" , totalDuration);
     
-    template.duration = totalDuration + 30; 
+    template.duration = totalDuration + 25; 
     const timePadding = 0.4;
     let currentTime = 0;
 
@@ -42,7 +42,7 @@ const renderVideo = async (req, res) => {
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[2].time = currentTime 
       template.elements[2].duration = audioDuration + 15
-      template.elements[2].x[0].time = audioDuration - 4
+      template.elements[2].x[0].time = template.elements[2].duration - 14
       template.elements[2].x_scale[0].time = audioDuration - 7
 
       template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl)
@@ -60,6 +60,7 @@ const renderVideo = async (req, res) => {
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[3].time = currentTime
       template.elements[3].duration = audioDuration + 5
+      template.elements[3].y[0].time =  template.elements[3].duration - 5
 
       template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl)
       template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl)
@@ -79,7 +80,7 @@ const renderVideo = async (req, res) => {
       template.elements[4].duration = audioDuration + 5
 
       template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl)
-      template.elements[4].elements[3].duration = audioDuration
+      template.elements[4].elements[3].duration = audioDuration + 2
       template.elements[4].elements[6].text = "Sial\nConstruct"
       template.elements[4].elements[7].source = String(audioPath.url)
       // template.elements[4].elements[7].time = 4
@@ -87,13 +88,18 @@ const renderVideo = async (req, res) => {
 
       currentTime += audioDuration;
     });
-    
+
+    template.elements[5].time = currentTime + 1
+    template.elements[5].duration = 6
+
+    currentTime += template.elements[5].duration;
+  
     // adding elements to body
     const track1Element = {
       "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
       "type": "video",
       "track": 1,
-      "time": currentTime, 
+      "time": currentTime - 1.2, 
       "animations": [
         {
           "time": 0,
@@ -112,7 +118,7 @@ const renderVideo = async (req, res) => {
         "id": "ec20c61f-f0af-4c98-aa5f-65653c5b7a1a",
         "type": "image",
         "track": 4,
-        "time": currentTime,
+        "time": currentTime - 1.2,
         "duration": totalDuration,
         "x": "93.6257%",
         "y": "10.2028%",
@@ -134,7 +140,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 10, 
+        "time": totalDuration + 5, 
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [

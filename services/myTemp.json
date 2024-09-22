@@ -1,25 +1,18 @@
 {
   "output_format": "mp4",
-  "width": 1920,
-  "height": 1080,
-  "snapshot_time": 7.42,
-  "fill_color": "#120a0a",
-  "multipart": 120,
-  "prefetch": true,
+  "width": 1280,
+  "height": 720,
+  "duration": 171.1507,
+  "snapshot_time": 6.57,
+  "fill_color": "rgba(255,255,255,1)",
   "elements": [
     {
-      "type": "composition",
-      "elements": [
-        
-      ]
-    },
-    {
-      "id": "88628919-f448-4287-88cf-0317cf8c8f34",
+      "id": "68ef7620-e62f-4b8d-9f8f-e7426662c36f",
       "name": "SLIDE 1",
       "type": "composition",
-      "track": 2,
+      "track": 1,
       "time": 0,
-      "duration": 30.418,
+      "duration": 31.568,
       "elements": [
         {
           "id": "eb6fbb24-5fee-47ea-b9a8-d8d062dede55",
@@ -39,7 +32,7 @@
           ],
           "width": "150%",
           "height": "150%",
-          "source": ""
+          "source": "https://cdn.britannica.com/87/186687-050-3AA9E551/Justin-Trudeau-2015.jpg"
         },
         {
           "id": "e7648287-54a6-4e5a-9623-cc2a28f8f65e",
@@ -87,30 +80,30 @@
           "y_anchor": "0%",
           "fill_color": "#ffffff",
           "shadow_color": "rgba(0,0,0,0.25)",
-          "text": "",
+          "text": "STATE\nOF\nTE\nCOUNTRY",
           "font_family": "Suez One",
           "font_size_minimum": "1.3 vmin"
         },
         {
           "id": "audio",
-          "time": 0,
           "type": "audio",
           "track": 4,
-          "source": "",
-          "duration": 0
+          "time": 0,
+          "duration": 26.568,
+          "source": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-9.mp3"
         }
       ]
     },
     {
-      "id": "68ef7620-e62f-4b8d-9f8f-e7426662c36f",
+      "id": "969ea2bf-98b3-44d3-af24-e7ade800b7d8",
       "name": "SLIDE 2",
       "type": "composition",
-      "track": 3,
-      "time": 0,
-      "duration": 0,
+      "track": 2,
+      "time": 26.568,
+      "duration": 44.568,
       "x": [
         {
-          "time": 36.343,
+          "time": 29.568,
           "value": "50%"
         },
         {
@@ -120,7 +113,7 @@
       ],
       "x_scale": [
         {
-          "time": 33.698,
+          "time": 22.568,
           "easing": "quadratic-in",
           "value": "100%"
         },
@@ -192,7 +185,7 @@
           "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
         },
         {
-          "id": "9f05e947-4ef5-4f39-b4c4-29911a296f8e",
+          "id": "2fdae454-e5e4-482a-a126-a8d94175a6fe",
           "type": "shape",
           "track": 3,
           "time": 1.02,
@@ -229,10 +222,10 @@
               "value": "50%"
             }
           ],
-          "source": "d184bb94-074b-4077-9aeb-18bd6b7db5b8"
+          "source": "https://files.tvo.org/files/s3fs-public/styles/full_width_1280/public/article-thumbnails/150_Gallery_Feature.jpg?itok=42hk-ruB"
         },
         {
-          "id": "a3fe104b-e41b-4466-af5d-d23ae0ecbe52",
+          "id": "25914cb5-e45b-4528-a0a9-ab0e200a7b00",
           "type": "shape",
           "track": 5,
           "time": 2.47,
@@ -293,33 +286,33 @@
               "value": "100%"
             }
           ],
-          "text": "Country",
+          "text": "PEOPLE",
           "font_family": "Suez One"
         },
         {
-          "id": "audio",
-          "time": 0,
+          "id": "e6b5c86d-0368-4738-8d4d-3a799690b389",
           "type": "audio",
           "track": 7,
-          "source": "",
-          "duration": 0
+          "time": 0,
+          "duration": 29.568,
+          "source": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-5.mp3"
         }
       ]
     },
     {
-      "id": "969ea2bf-98b3-44d3-af24-e7ade800b7d8",
+      "id": "8a8f6830-bce6-4c49-81c6-312079c2c94a",
       "name": "SLIDE 3",
       "type": "composition",
-      "track": 4,
-      "time": 66.4746,
-      "duration": 20.9713,
+      "track": 3,
+      "time": 56.136,
+      "duration": 30.568,
       "y": [
         {
-          "time": 16.701,
+          "time": 25.701,
           "value": "50%"
         },
         {
-          "time": "end",
+          "time": 30.568,
           "value": "-60%"
         }
       ],
@@ -363,7 +356,7 @@
               "value": "115%"
             }
           ],
-          "source": "f4c69e0f-82e9-4873-8cb3-0d1fdade9b86"
+          "source": "https://akm-img-a-in.tosshub.com/indiatoday/images/author/Justin%20Trudeau%20reuters-profile_image_one_to_one.jpg?VersionId=4XPrHykL0hWcu0HSQD8LqVBjb4T09kUv"
         },
         {
           "id": "8b71051a-54e0-4762-8489-f4734361fdd6",
@@ -440,11 +433,11 @@
               }
             ]
           ],
-          "source": "e57921ba-80d9-4c39-99d4-6cd4d25e5bec",
+          "source": "https://akm-img-a-in.tosshub.com/indiatoday/images/author/Justin%20Trudeau%20reuters-profile_image_one_to_one.jpg?VersionId=4XPrHykL0hWcu0HSQD8LqVBjb4T09kUv",
           "smart_crop": true
         },
         {
-          "id": "bc799cea-0598-4327-bbcb-e43c54bcd9de",
+          "id": "07710e61-27f3-4d60-8e3b-8b095217e417",
           "type": "shape",
           "track": 3,
           "time": 2.4497,
@@ -515,7 +508,7 @@
           "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
         },
         {
-          "id": "c503e2ce-a6aa-4ca6-86f6-6a4c0857c0cf",
+          "id": "b2572179-f47b-495f-b354-2800b6a0f78b",
           "type": "shape",
           "track": 5,
           "time": 4.2745,
@@ -540,7 +533,7 @@
           "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
         },
         {
-          "id": "c8afd479-6cca-4d19-a415-566dc3f836b2",
+          "id": "d2f36836-fc23-4b1e-aa30-76ec3c65425a",
           "type": "shape",
           "track": 6,
           "time": 4.2745,
@@ -565,7 +558,7 @@
           "path": "M 0 0 L 100 0 L 100 100 L 0 100 L 0 0 Z"
         },
         {
-          "id": "3f89393b-f58a-42d5-bff8-6a99034f3b39",
+          "id": "52a954e5-c287-4a24-b35c-360701185306",
           "type": "text",
           "track": 7,
           "time": 3.3344,
@@ -585,26 +578,26 @@
           "x_anchor": "0%",
           "y_anchor": "0%",
           "fill_color": "#ffffff",
-          "text": "CHAOS",
+          "text": "CHOS",
           "font_family": "Suez One"
         },
         {
-          "id": "audio",
-          "time": 0,
+          "id": "927a0a06-a69c-426e-9d3d-21f265ab58aa",
           "type": "audio",
           "track": 8,
-          "source": "",
-          "duration": 0
+          "time": 0,
+          "duration": 25.568,
+          "source": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-9.mp3"
         }
       ]
     },
     {
-      "id": "8a8f6830-bce6-4c49-81c6-312079c2c94a",
+      "id": "8a53cb98-249c-4183-87cc-1be3765b4ee5",
       "name": "SLIDE 4",
       "type": "composition",
-      "track": 5,
-      "time": 81.449,
-      "duration": 17.499,
+      "track": 4,
+      "time": 81.704,
+      "duration": 35.568,
       "elements": [
         {
           "id": "97f05e60-8190-4edd-a1f4-0444d75d659b",
@@ -681,7 +674,7 @@
           "type": "image",
           "track": 4,
           "time": 1.683,
-          "duration": 27.9746,
+          "duration": 30.568,
           "y": [
             {
               "time": 0.05,
@@ -713,7 +706,7 @@
               "value": "115%"
             }
           ],
-          "source": "02e1862a-8576-4898-95e3-458328cb3c8d"
+          "source": "https://cloudfront-us-east-2.images.arcpublishing.com/reuters/IJB53DX62BLFVOVQP534XFREUM.jpg"
         },
         {
           "id": "6cf9d757-a8ac-4d24-baf3-d1e213a5bb81",
@@ -784,132 +777,234 @@
           "x_anchor": "0%",
           "y_anchor": "0%",
           "fill_color": "#ffffff",
-          "text": "Social\nConstruct",
+          "text": "Sial\nConstruct",
           "font_family": "Suez One"
         },
         {
-          "id": "audio",
-          "time": 0,
+          "id": "f4f49973-92e9-4ddb-9f6f-a456bf87c9b9",
           "type": "audio",
           "track": 8,
-          "source": "",
-          "duration": 0
+          "time": 0,
+          "duration": 30.568,
+          "source": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-4.mp3"
         }
       ]
     },
     {
-      "id": "6d060c77-bfa8-448d-97b3-8d700f4b9b72",
-      "name": "INTRO",
+      "id": "88628919-f448-4287-88cf-0317cf8c8f34",
+      "name": "SLIDE 1",
       "type": "composition",
-      "track": 6,
-      "time": 93.4428,
-      "duration": 7.6331,
+      "track": 5,
       "elements": [
         {
-          "id": "0259ea4b-1add-48da-841e-945e9b05af2d",
-          "type": "composition",
+          "id": "b7e651cc-3cc0-46c7-99a8-77d8a1ba2758",
+          "type": "video",
           "track": 1,
-          "time": 0,
-          "duration": 3.9451,
-          "locked": true,
-          "x": [
+          "time": 112.272,
+          "animations": [
             {
-              "time": 1.882,
-              "value": "49%"
-            },
-            {
-              "time": 3.18,
-              "value": "42%"
+              "time": 0,
+              "duration": 1,
+              "easing": "quadratic-out",
+              "type": "slide",
+              "direction": "270°"
             }
           ],
+          "source": "https://drive.google.com/file/d/1usbexWCpNdrq-wiqvbVIhJHfuxiTkcf4/view?usp=sharing"
+        },
+        {
+          "id": "image-0-0",
+          "type": "image",
+          "track": 2,
+          "time": 112.272,
+          "duration": 10,
+          "width": "60.1639%",
+          "height": "58.8122%",
           "x_scale": [
             {
-              "time": 1.468,
+              "time": 0.077,
               "value": "100%"
             },
             {
-              "time": 3.06,
-              "easing": "cubic-bezier(0.89, 0.02, 0.39, 1.01)",
-              "value": "1200%"
+              "time": "end",
+              "value": "115%"
             }
           ],
           "y_scale": [
             {
-              "time": 1.468,
+              "time": 0.077,
               "value": "100%"
             },
             {
-              "time": 3.06,
-              "easing": "cubic-bezier(0.89, 0.02, 0.39, 1.01)",
-              "value": "1200%"
+              "time": "end",
+              "value": "115%"
             }
           ],
-          "elements": [
+          "stroke_color": "#fdfdfd",
+          "stroke_width": "1.5 vmin",
+          "stroke_join": "miter",
+          "shadow_color": "rgba(0,0,0,0.65)",
+          "shadow_blur": "5.5 vmin",
+          "shadow_x": "4 vmin",
+          "shadow_y": "4 vmin",
+          "clip": true,
+          "animations": [
             {
-              "id": "6ea7f6bf-1754-4f98-8f36-d07b978635db",
-              "type": "image",
-              "track": 1,
-              "time": 0,
-              "x": "48.0953%",
-              "y": [
-                {
-                  "time": 0,
-                  "value": "265.38%"
-                },
-                {
-                  "time": 3.45,
-                  "easing": "cubic-bezier(0.79, 0.01, 0.62, 0.99)",
-                  "value": "-16.6984%"
-                }
-              ],
-              "width": "3.5938%",
-              "height": "279.6076%",
-              "x_scale": "106%",
-              "y_scale": "114%",
-              "clip": true,
-              "source": "1ff37200-ddfa-4f3b-befa-ad44641eb27d"
-            },
-            {
-              "id": "d85351b5-8485-44b1-a03c-f32190e4a501",
-              "type": "image",
-              "track": 2,
-              "time": 0,
-              "x": "53.43%",
-              "y": [
-                {
-                  "time": 0,
-                  "value": "-157.5%"
-                },
-                {
-                  "time": 3.45,
-                  "easing": "cubic-bezier(0.79, 0.01, 0.62, 0.99)",
-                  "value": "132.5%"
-                }
-              ],
-              "width": "3.8021%",
-              "height": "265%",
-              "x_scale": "106%",
-              "y_scale": "114%",
-              "source": "3812dff7-b578-48d3-8558-ef62e964f1cf"
+              "time": 0.077,
+              "duration": 1.566,
+              "transition": true,
+              "type": "slide",
+              "direction": "90°"
             }
-          ]
+          ],
+          "source": "https://newmatilda.com/app/uploads/2024/05/Justin-Trudeau-star-wars-main.jpg"
         },
         {
-          "id": "f0b29f94-8007-478f-aa12-4d546b1034f3",
-          "type": "video",
+          "id": "image-0-1",
+          "type": "image",
           "track": 2,
-          "time": 2.51,
-          "y": [
+          "time": 122.272,
+          "duration": 10,
+          "width": "60.1639%",
+          "height": "58.8122%",
+          "x_scale": [
             {
-              "time": 1.729,
-              "value": "50%"
+              "time": 0.077,
+              "value": "100%"
             },
             {
-              "time": 2.399,
-              "value": "-50%"
+              "time": "end",
+              "value": "115%"
             }
           ],
-          "source": "a2f90747-2d7e-4429-8cd2-e509a8108ab4"
+          "y_scale": [
+            {
+              "time": 0.077,
+              "value": "100%"
+            },
+            {
+              "time": "end",
+              "value": "115%"
+            }
+          ],
+          "stroke_color": "#fdfdfd",
+          "stroke_width": "1.5 vmin",
+          "stroke_join": "miter",
+          "shadow_color": "rgba(0,0,0,0.65)",
+          "shadow_blur": "5.5 vmin",
+          "shadow_x": "4 vmin",
+          "shadow_y": "4 vmin",
+          "clip": true,
+          "animations": [
+            {
+              "time": 0.077,
+              "duration": 1.566,
+              "transition": true,
+              "type": "slide",
+              "direction": "90°"
+            }
+          ],
+          "source": "https://foreignpolicy.com/wp-content/uploads/2022/03/Canada-Trudeau-truckers-protests-GettyImages-1238485212.jpg?w=800?quality=90"
+        },
+        {
+          "id": "video-1",
+          "type": "video",
+          "track": 2,
+          "time": 133.24,
+          "width": "60.1639%",
+          "height": "58.8122%",
+          "x_scale": [
+            {
+              "time": 0.077,
+              "value": "100%"
+            },
+            {
+              "time": "end",
+              "value": "115%"
+            }
+          ],
+          "y_scale": [
+            {
+              "time": 0.077,
+              "value": "100%"
+            },
+            {
+              "time": "end",
+              "value": "115%"
+            }
+          ],
+          "stroke_color": "#fdfdfd",
+          "stroke_width": "1.5 vmin",
+          "stroke_join": "miter",
+          "shadow_color": "rgba(0,0,0,0.65)",
+          "shadow_blur": "5.5 vmin",
+          "shadow_x": "4 vmin",
+          "shadow_y": "4 vmin",
+          "clip": true,
+          "animations": [
+            {
+              "time": 0.077,
+              "duration": 1.566,
+              "transition": true,
+              "type": "slide",
+              "direction": "90°"
+            }
+          ],
+          "source": "https://machine-genius.s3.amazonaws.com/Movies/Movie_1726143336277.mp4"
+        },
+        {
+          "id": "audio-0",
+          "type": "audio",
+          "track": 3,
+          "time": 112.272,
+          "duration": 20.568,
+          "source": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-7.mp3"
+        },
+        {
+          "id": "audio-1",
+          "type": "audio",
+          "track": 3,
+          "time": 133.24,
+          "duration": 15
+        },
+        {
+          "id": "52510dc8-7da3-408c-946b-248605c106aa",
+          "type": "image",
+          "track": 4,
+          "time": 112.272,
+          "duration": 141.84,
+          "x": "93.6257%",
+          "y": "10.2028%",
+          "width": "8.0154%",
+          "height": "14.4895%",
+          "clip": true,
+          "animations": [
+            {
+              "time": 0.077,
+              "duration": 1.566,
+              "transition": true,
+              "type": "slide",
+              "direction": "90°"
+            }
+          ],
+          "source": "207563f8-29f0-4440-94c0-7a063c1c24ff"
+        },
+        {
+          "id": "d1102837-3761-459a-9868-67e6a2e5a619",
+          "type": "video",
+          "track": 4,
+          "time": 151.84,
+          "duration": 20,
+          "animations": [
+            {
+              "time": 0.077,
+              "duration": 1.566,
+              "transition": true,
+              "type": "slide",
+              "direction": "90°"
+            }
+          ],
+          "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c"
         }
       ]
     }
