@@ -1,12 +1,13 @@
 const Creatomate = require('creatomate');
 require("dotenv").config();
-const openAiSrc = require('./openAi');
 
 const renderVideo = async (req, res) => {
   try {
-    const { paragraphJson , slide1Json , slide2Json , slide3Json , slide4Json} = req.body;
-    if (!paragraphJson || !slide1Json || !slide2Json || ! slide3Json || !slide4Json) {
-      return res.status(400).json({ success: false, error: "No content provided" });
+    const { paragraphJson, slideJson } = req.body;
+    const { slide1Json, slide2Json, slide3Json, slide4Json } = slideJson || {};
+    
+    if (!paragraphJson || !slide1Json || !slide2Json || !slide3Json || !slide4Json) {
+        return res.status(400).json({ success: false, error: "No content provided" });
     }
 
     const template = require('../Template.json');
@@ -28,7 +29,7 @@ const renderVideo = async (req, res) => {
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[1].duration = audioDuration + 5
 
-      template.elements[1].elements[0].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[1].elements[0].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[1].elements[2].text = "STATE\nOF\nTE\nCOUNTRY"
       template.elements[1].elements[3].source = String(audioPath.url)
       template.elements[1].elements[3].duration = audioDuration
@@ -45,7 +46,7 @@ const renderVideo = async (req, res) => {
       template.elements[2].x[0].time = template.elements[2].duration - 14
       template.elements[2].x_scale[0].time = audioDuration - 7
 
-      template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[2].elements[5].text = "PEOPLE"
       template.elements[2].elements[6].source = String(audioPath.url)
       // template.elements[2].elements[6].time = 4
@@ -62,8 +63,8 @@ const renderVideo = async (req, res) => {
       template.elements[3].duration = audioDuration + 5
       template.elements[3].y[0].time =  template.elements[3].duration - 5
 
-      template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl)
-      template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl[0])
+      template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[3].elements[6].text = "CHOS"
       template.elements[3].elements[7].source = String(audioPath.url)
       // template.elements[3].elements[7].time = 4
@@ -79,7 +80,7 @@ const renderVideo = async (req, res) => {
       template.elements[4].time = currentTime
       template.elements[4].duration = audioDuration + 5
 
-      template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl)
+      template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[4].elements[3].duration = audioDuration + 2
       template.elements[4].elements[6].text = "Sial\nConstruct"
       template.elements[4].elements[7].source = String(audioPath.url)
@@ -163,7 +164,7 @@ const renderVideo = async (req, res) => {
 
       if (videoPath) {
         const videoElement = {
-          id: `video-${index}`,
+          id: `video`,
           type: "video",
           track: 2,
           time: currentTime,

@@ -116,7 +116,7 @@ const generateSlideJson = async (intro) => {
         return { keyword, imageUrl };
       }));
 
-      const audioPath = await convertTextToAudio(paragraph.text, index);
+      const audioPath = await convertTextToAudio(paragraph.text, `S${index + 1}`);
 
       return {
         index,

@@ -17,7 +17,7 @@ const handleSearchImg = async (searchImgKeyword) => {
     const filteredImageUrls = imageResults
       .filter(image => image.original && image.original_width < 900 && image.original_width > 600 && image.original_height < 800 && image.original_height > 400) 
       .map(image => image.original) 
-      .filter(url => !url.includes('fbsbx') && !url.includes('www.consilium.europa.eu') && !url.includes('www.politico.com')); 
+      .filter(url => !url.includes('fbsbx') && !url.includes('www.consilium.europa.eu') && !url.includes('www.politico.com') && !url.includes('newsobserver')); 
 
     return filteredImageUrls.slice(1,8);
   } catch (error) {

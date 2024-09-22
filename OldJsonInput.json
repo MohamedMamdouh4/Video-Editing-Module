@@ -1,0 +1,113 @@
+
+
+{
+    "slide4Json": [
+        {
+            "index": 0,
+            "text": "Social\nConstruct.",
+            "keywordsAndImages": [
+                {
+                    "keyword": "Trudeau",
+                    "imageUrl": [
+                        "https://cloudfront-us-east-2.images.arcpublishing.com/reuters/IJB53DX62BLFVOVQP534XFREUM.jpg"
+                    ]
+                }
+            ],
+            "audioPath": {
+                "index": 0,
+                "url": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-6.mp3",
+                "duration": 27.568
+            }
+        }
+    ],
+    "slide3Json": [
+        {
+            "index": 0,
+            "text": "People.",
+            "keywordsAndImages": [
+                {
+                    "keyword": "Trudeau",
+                    "imageUrl": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/author/Justin%20Trudeau%20reuters-profile_image_one_to_one.jpg?VersionId=4XPrHykL0hWcu0HSQD8LqVBjb4T09kUv"
+                    ]
+                }
+            ],
+            "audioPath": {
+                "index": 0,
+                "url": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-9.mp3",
+                "duration": 13.568
+            }
+        }
+    ],
+    "slide2Json": [
+        {
+            "index": 0,
+            "text": "People.",
+            "keywordsAndImages": [
+                {
+                    "keyword": "Trudeau",
+                    "imageUrl": [
+                        "https://files.tvo.org/files/s3fs-public/styles/full_width_1280/public/article-thumbnails/150_Gallery_Feature.jpg?itok=42hk-ruB"
+                    ]
+                }
+            ],
+            "audioPath": {
+                "index": 0,
+                "url": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-5.mp3",
+                "duration": 23.568
+            }
+        }
+    ],
+    "slide1Json": [
+        {
+            "index": 0,
+            "text": "From the very start.",
+            "keywordsAndImages": [
+                {
+                    "keyword": "Trudeau",
+                    "imageUrl": [
+                        "https://cdn.britannica.com/87/186687-050-3AA9E551/Justin-Trudeau-2015.jpg"
+                    ]
+                }
+            ],
+            "audioPath": {
+                "index": 0,
+                "url": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-4.mp3",
+                "duration": 33.568
+            }
+        }
+    ],
+    "paragraphJson": [
+        {
+            "index": 0,
+            "text": "From the very start, controversy seemed to follow Trudeau like a shadow. Who could forget the Aga Khan vacation scandal, where Trudeau accepted luxurious holidays on a private island owned by the billionaire spiritual leader? If that wasn't enough to raise eyebrows, we then had the notorious cash-for-access fundraisers, offering wealthy elites the chance to hobnob with the Prime Minister in exchange for hefty donations.",
+            "keywordsAndImages": [
+                {
+                    "keyword": "Trudeau",
+                    "imageUrl": [
+                        "https://www.aljazeera.com/wp-content/uploads/2023/06/2023-06-07T193154Z_911914747_RC22B1A96PT5_RTRMADP_3_CANADA-MEDIA-TRUDEAU-1686178089.jpg?resize=770%2C513&quality=80",
+                        "https://bsmedia.business-standard.com/_media/bs/img/article/2024-09/11/full/1726051025-9299.jpg?im=FitAndFill=(826,465)",
+                        "https://www.orfonline.org/public/uploads/posts/image/65c0c9bae2201.png",
+                        "https://nypost.com/wp-content/uploads/sites/2/2022/02/trudeau-swastikas-149.jpg?quality=75&strip=all&w=744",
+                        "https://assets.weforum.org/editor/Zi5QT3ECLvJDZZT5TJV6wnEYK5OwlqcXTdAkofslXyI.jpg",
+                        "https://www.usnews.com/object/image/0000015a-d363-d70e-a5fe-fbf39e590000/170315-justintrudeau-editorial.jpg?update-time=1489605368580&size=responsive640",
+                        "https://hips.hearstapps.com/hmg-prod/images/canadian-prime-minister-pierre-elliott-trudeau-wearing-a-news-photo-1691007717.jpg?crop=1.00xw:0.666xh;0,0.154xh&resize=640:*"
+                    ]
+                }
+            ],
+            "audioPath": {
+                "index": 0,
+                "url": "https://machine-genius.s3.amazonaws.com/My_Audios/audio-0.mp3",
+                "duration": 26.208
+            }
+        },
+        {
+            "videoPath": "https://machine-genius.s3.amazonaws.com/Movies/Movie_1726143336277.mp4",
+            "audioPath": {
+                "index": 0,
+                "url": null,
+                "duration": null
+            }
+        }
+    ]
+}
