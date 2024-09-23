@@ -8,7 +8,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const splitContent = async (content) => {
     try {
       const prompt = `Could you please split this content into paragraphs, then give me JUST ONE KEYWORD for each paragraph ONLY ONE KEYWORD !!!,
-      I need keword to be names of persons that mentioned in pragraph and foucus if this names for famous people (President , Head of governoment , ..)
+      I need keword to be names of persons that mentioned in pragraph if this names for famous people (President , Head of governoment , ..)
       IF there are any person mentioned in this paragraph give me name of governomet if mentioned , or name of country, if you dont find any
       anything fo put as keword give me the most important word in this pragraph
       and please don't change the original content EVER!

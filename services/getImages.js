@@ -19,7 +19,7 @@ const handleSearchImg = async (searchImgKeyword) => {
       .map(image => image.original) 
       .filter(url => !url.includes('fbsbx') && !url.includes('www.consilium.europa.eu') && !url.includes('www.politico.com') && !url.includes('newsobserver')); 
 
-    return filteredImageUrls.slice(1,8);
+    return filteredImageUrls;
   } catch (error) {
     console.error("Error getting image:", error);
     throw error;

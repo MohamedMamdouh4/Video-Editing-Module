@@ -25,12 +25,12 @@ const renderVideo = async (req, res) => {
 
     // adding to slide 1
     slide1Json.forEach((slide1, index) => {
-      const { text, keywordsAndImages, audioPath} = slide1;
+      const { title, keywordsAndImages, audioPath} = slide1;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[1].duration = audioDuration + 5
 
       template.elements[1].elements[0].source = String(keywordsAndImages[0].imageUrl[0])
-      template.elements[1].elements[2].text = "STATE\nOF\nTE\nCOUNTRY"
+      template.elements[1].elements[2].text = title
       template.elements[1].elements[3].source = String(audioPath.url)
       template.elements[1].elements[3].duration = audioDuration
 
@@ -39,7 +39,7 @@ const renderVideo = async (req, res) => {
 
     // adding to slide 2
     slide2Json.forEach((slide2, index) => {
-      const { text, keywordsAndImages, audioPath} = slide2;
+      const { title, keywordsAndImages, audioPath} = slide2;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[2].time = currentTime 
       template.elements[2].duration = audioDuration + 15
@@ -47,9 +47,8 @@ const renderVideo = async (req, res) => {
       template.elements[2].x_scale[0].time = audioDuration - 7
 
       template.elements[2].elements[3].source = String(keywordsAndImages[0].imageUrl[0])
-      template.elements[2].elements[5].text = "PEOPLE"
+      template.elements[2].elements[5].text = title
       template.elements[2].elements[6].source = String(audioPath.url)
-      // template.elements[2].elements[6].time = 4
       template.elements[2].elements[6].duration = audioDuration
 
       currentTime += audioDuration;
@@ -57,7 +56,7 @@ const renderVideo = async (req, res) => {
 
     // adding to slide 3
     slide3Json.forEach((slide3, index) => {
-      const { text, keywordsAndImages, audioPath} = slide3;
+      const { title, keywordsAndImages, audioPath} = slide3;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[3].time = currentTime
       template.elements[3].duration = audioDuration + 5
@@ -65,9 +64,8 @@ const renderVideo = async (req, res) => {
 
       template.elements[3].elements[0].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[3].elements[1].source = String(keywordsAndImages[0].imageUrl[0])
-      template.elements[3].elements[6].text = "CHOS"
+      template.elements[3].elements[6].text = title
       template.elements[3].elements[7].source = String(audioPath.url)
-      // template.elements[3].elements[7].time = 4
       template.elements[3].elements[7].duration = audioDuration
 
       currentTime += audioDuration
@@ -75,16 +73,15 @@ const renderVideo = async (req, res) => {
 
     // adding to slide 4
     slide4Json.forEach((slide4, index) => {
-      const { text, keywordsAndImages, audioPath} = slide4;
+      const { title, keywordsAndImages, audioPath} = slide4;
       const audioDuration = audioPath ? audioPath.duration || 15 : 15;
       template.elements[4].time = currentTime
       template.elements[4].duration = audioDuration + 5
 
       template.elements[4].elements[3].source = String(keywordsAndImages[0].imageUrl[0])
       template.elements[4].elements[3].duration = audioDuration + 2
-      template.elements[4].elements[6].text = "Sial\nConstruct"
+      template.elements[4].elements[6].text = title
       template.elements[4].elements[7].source = String(audioPath.url)
-      // template.elements[4].elements[7].time = 4
       template.elements[4].elements[7].duration = audioDuration
 
       currentTime += audioDuration;
@@ -141,7 +138,7 @@ const renderVideo = async (req, res) => {
         "id": "d1102837-3761-459a-9868-67e6a2e5a619",
         "type": "video",
         "track": 4,
-        "time": totalDuration + 5, 
+        "time": template.duration - 15, 
         "duration": 20, 
         "source": "fdd26979-7b5a-4fee-b2bd-d8c7dec8c93c",
         "animations": [
@@ -259,9 +256,9 @@ const renderVideo = async (req, res) => {
 
     const creatomateClient = new Creatomate.Client(process.env.CREATOMATE_API_KEY);
     const options = { source: template, modifications: {} };
-
+    
     console.log('Rendering video, please wait...');
-    const renders = await creatomateClient.render(options);
+    const renders = await creatomateClient.render(options , 1800 );
     const videoUrl = renders[0].url;
 
     return res.status(200).json({
