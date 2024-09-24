@@ -11,13 +11,18 @@ const handleSearchImg = async (searchImgKeyword) => {
         api_key: process.env.SERPAPI_KEY || "fdfd21a7ca252814cc50f03f935c29f99bc21c6478d5778c6f104f4881670eae"
       }
     });
-    
+
     const imageResults = response.data.images_results || [];
 
     const filteredImageUrls = imageResults
       .filter(image => image.original && image.original_width < 900 && image.original_width > 600 && image.original_height < 800 && image.original_height > 400) 
       .map(image => image.original) 
-      .filter(url => !url.includes('fbsbx') && !url.includes('www.consilium.europa.eu') && !url.includes('www.politico.com') && !url.includes('newsobserver')); 
+      .filter(url => !url.includes('fbsbx')
+      && !url.includes('www.consilium.europa.eu')
+      && !url.includes('www.politico.com')
+      && !url.includes('newsobserver')
+      && !url.includes("usnews")
+      && !url.includes("macleans")); 
 
     return filteredImageUrls;
   } catch (error) {
