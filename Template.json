@@ -6,6 +6,50 @@
   "fill_color": "#120a0a",
   "multipart": 120,
   "prefetch": true,
+  "fonts": [
+    {
+      "family": "Helvetica",
+      "weight": 700,
+      "style": "normal",
+      "source": "4963efbe-ab66-430c-8748-0b05ec8e39c3"
+    },
+    {
+      "family": "Helvetica",
+      "weight": 400,
+      "style": "normal",
+      "source": "bfbe1ac5-d9d7-4191-ab23-26dbe062c292"
+    },
+    {
+      "family": "Helvetica Compressed",
+      "weight": 500,
+      "style": "normal",
+      "source": "59df28eb-3774-44ea-9748-4538f4c75016"
+    },
+    {
+      "family": "Helvetica Light",
+      "weight": 400,
+      "style": "normal",
+      "source": "6b11279b-b925-41e6-b2a1-f1dc6a879bf8"
+    },
+    {
+      "family": "Helvetica",
+      "weight": 400,
+      "style": "italic",
+      "source": "89201313-f056-4983-8624-9b2c7f74f755"
+    },
+    {
+      "family": "Helvetica Rounded",
+      "weight": 700,
+      "style": "normal",
+      "source": "f368fe6f-a9d7-44ec-9113-19049fb86000"
+    },
+    {
+      "family": "Helvetica",
+      "weight": 700,
+      "style": "italic",
+      "source": "1257983a-f7ab-4184-9039-0d31f3bfff31"
+    }
+  ],
   "elements": [
     {
       "type": "composition",

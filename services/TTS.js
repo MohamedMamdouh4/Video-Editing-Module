@@ -40,29 +40,6 @@ const processSequentiallyWithDelay = async (array, delay, callback) => {
     return results;
 };
 
-// 02- generateContent function after changes
-const generateContent = async (req, res) => {
-    try {
-      const { selectedContent } = req.body;
-      if (!selectedContent) {
-        return res.status(400).json({ success: false, error: "No content provided" });
-      }
-      const paragraphJson = await splitContent(selectedContent);
-  
-      // 03- convertTextToAudio sequentially with a delay
-      const audioPaths = await processSequentiallyWithDelay(
-        paragraphJson,
-        3000,
-        (paragraph, index) => convertTextToAudio(paragraph.text, index)
-      );
-  
-      return res.json({ success: true, paragraphJson, audioPaths });
-    } catch (error) {
-      console.error("Error processing request:", error);
-      res.status(500).json({ success: false, error: error.message });
-    }
-};
-
 module.exports = 
 {
   convertTextToAudio,
