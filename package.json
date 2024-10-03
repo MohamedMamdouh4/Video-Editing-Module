@@ -10,6 +10,8 @@
     "axios": "^1.7.7",
     "creatomate": "^1.2.1",
     "dotenv": "^16.4.5",
+    "downlib": "^1.2.7",
+    "esm": "^3.2.25",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "get-audio-duration": "^4.0.1",

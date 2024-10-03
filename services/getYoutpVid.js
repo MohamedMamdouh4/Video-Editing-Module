@@ -1,43 +1,47 @@
-const fs = require('fs');
-const ytdl = require('ytdl-core');
+const { exec } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
-const downloadAndSaveVideo = async (req, res) => {
-    const { videoUrl, videoTitle } = req.body;
+const downloadAndSaveVideo = (req, res) => {
+    const videoUrl = req.body.url;
 
-    if (!videoUrl || !ytdl.validateURL(videoUrl)) {
-        return res.status(400).json({ error: 'Invalid YouTube URL' });
+    if (!videoUrl) {
+        return res.status(400).send('URL is required');
     }
 
-    try {
-        const savePath = path.resolve(__dirname, `${videoTitle || 'video'}.mp4`);
-        const videoStream = ytdl(videoUrl, { quality: 'highest' });
-        const writeStream = fs.createWriteStream(savePath);
-        videoStream.pipe(writeStream);
+    const outputPath = path.resolve(__dirname, 'videos', 'video.mp4'); 
 
-        writeStream.on('finish', () => {
-            console.log(`Video downloaded and saved as ${savePath}`);
-            res.status(200).json({
-                message: 'Video downloaded successfully',
-                filePath: savePath
+    const command = `yt-dlp -o "${outputPath}" ${videoUrl}`;
+
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error during video download: ${error.message}`);
+            return res.status(500).send('Error downloading the video');
+        }
+
+        console.log(`yt-dlp stdout: ${stdout}`);
+        console.error(`yt-dlp stderr: ${stderr}`);
+
+        // Once the video is downloaded, send it to the client
+        fs.access(outputPath, fs.constants.F_OK, (err) => {
+            if (err) {
+                console.error('Error accessing downloaded video:', err.message);
+                return res.status(500).send('Video not found');
+            }
+
+            res.setHeader('Content-Disposition', 'attachment; filename="video.mp4"');
+            res.setHeader('Content-Type', 'video/mp4');
+            const fileStream = fs.createReadStream(outputPath);
+            fileStream.pipe(res);
+
+            // Optionally, you can delete the file after streaming it to save space
+            fileStream.on('close', () => {
+                fs.unlinkSync(outputPath); // Remove the file after sending it
             });
         });
-
-        videoStream.on('error', (error) => {
-            console.error('Error during video stream:', error);
-            res.status(500).json({ error: 'Error downloading video' });
-        });
-
-        writeStream.on('error', (error) => {
-            console.error('Error during file write:', error);
-            res.status(500).json({ error: 'Error saving video' });
-        });
-    } catch (error) {
-        console.error('Error downloading the video:', error);
-        res.status(500).json({ error: 'Failed to download and save video' });
-    }
+    });
 };
 
 module.exports = {
     downloadAndSaveVideo
-}
+};
